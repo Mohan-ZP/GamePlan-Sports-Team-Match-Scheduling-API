@@ -9,3 +9,4 @@ mongo_client = MongoClient(MONGO_URI)
 db = mongo_client[DB_NAME]
 users_collection = db["users"]
 teams_collection = db["teams"]
+players_collection = db["players"]

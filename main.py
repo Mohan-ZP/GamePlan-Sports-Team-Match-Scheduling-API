@@ -6,3 +6,4 @@ app = FastAPI(title="GamePlan - Sports Team & Match Scheduling API")
 
 app.include_router(auth_routes.router, tags=["Authentication"])
 app.include_router(team_routes.router, tags=["Teams"])
+app.include_router(player_routes.router, tags=["Players"])

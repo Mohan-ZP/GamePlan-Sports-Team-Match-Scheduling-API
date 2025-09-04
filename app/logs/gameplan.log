@@ -55,3 +55,26 @@ Traceback (most recent call last):
     raise JWTError(e)
 jose.exceptions.JWTError: Invalid header string: 'utf-8' codec can't decode byte 0x88 in position 6: invalid start byte
 2025-09-04 17:49:51,917 - WARNING - Team creation failed: Royel Challengers already exists
+2025-09-05 00:10:58,307 - INFO - User logged in successfully: esh@example.com
+2025-09-05 00:11:36,487 - INFO - User logged in successfully: esh@example.com
+2025-09-05 00:14:31,850 - INFO - User esh@example.com fetched all teams
+2025-09-05 00:18:10,864 - INFO - Player created successfully: Stephen Curry
+2025-09-05 00:18:37,619 - INFO - Player created successfully: Stephen Curry
+2025-09-05 00:19:48,217 - INFO - Player created successfully: Jhohan
+2025-09-05 00:21:41,676 - INFO - Player created successfully: Jack
+2025-09-05 00:23:19,246 - INFO - Player created successfully: Jhon Snow
+2025-09-05 00:24:21,465 - INFO - Player created successfully: Jhonathan
+2025-09-05 00:25:59,640 - INFO - Player created successfully: Arjun
+2025-09-05 00:26:11,693 - ERROR - Unexpected error during player creation: '68b983300b1bcd47ca36083' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string
+Traceback (most recent call last):
+  File "D:\Gameplan\GamePlan-Sports-Team-Match-Scheduling-API\app\routes\player_routes.py", line 21, in create_player
+    if not teams_collection.find_one({"_id": ObjectId(player.team_id)}):
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\bson\objectid.py", line 105, in __init__
+    self.__validate(oid)
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\bson\objectid.py", line 193, in __validate
+    _raise_invalid_id(oid)
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\bson\objectid.py", line 38, in _raise_invalid_id
+    raise InvalidId(
+bson.errors.InvalidId: '68b983300b1bcd47ca36083' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string
+2025-09-05 00:26:34,363 - INFO - Player created successfully: Arjun
