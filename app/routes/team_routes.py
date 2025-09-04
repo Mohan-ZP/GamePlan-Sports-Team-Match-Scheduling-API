@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 from app.models import Team
 from app.database import teams_collection
 from app.utils.decorators import response_timer
@@ -33,3 +33,20 @@ async def create_team(team: Team):
         logger.exception(f"Unexpected error during team creation: {str(e)}")
         raise TeamCreationFailedException()
 
+
+# GET /teams - Get all teams
+@router.get("/get_teams")
+@response_timer
+async def get_teams():
+    try:
+        teams = list(teams_collection.find())
+        for t in teams:
+            t["id"] = str(t["_id"])
+            del t["_id"]
+
+        logger.info("Fetched all teams")
+        return {"teams": teams}
+
+    except Exception as e:
+        logger.exception(f"Error fetching teams: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch teams")
