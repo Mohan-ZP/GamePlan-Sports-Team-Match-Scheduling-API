@@ -10,3 +10,8 @@ class UserRegister(BaseModel):
 class LoginRequest(BaseModel):
     email: EmailStr
     password: str
+
+class Team(BaseModel):
+    name: str = Field(..., example="Warriors")
+    coach: str = Field(..., example="John Doe")
+    city: str = Field(..., example="New York")    

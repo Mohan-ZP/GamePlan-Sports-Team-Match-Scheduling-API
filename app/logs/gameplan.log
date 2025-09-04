@@ -5,3 +5,7 @@
 2025-09-04 14:22:43,324 - INFO - User logged in successfully: john@example.com
 2025-09-04 14:25:19,133 - WARNING - Login failed: Incorrect password - john@example.com
 2025-09-04 14:26:45,204 - INFO - User logged in successfully: john@example.com
+2025-09-04 15:09:57,103 - INFO - Team created successfully: Warriors
+2025-09-04 15:10:59,336 - INFO - Team created successfully: Thunders
+2025-09-04 15:12:00,889 - INFO - Team created successfully: Rangers
+2025-09-04 15:16:13,308 - WARNING - Team creation failed: Rangers already exists
