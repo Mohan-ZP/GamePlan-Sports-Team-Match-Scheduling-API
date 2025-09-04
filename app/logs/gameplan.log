@@ -20,3 +20,38 @@
 2025-09-04 15:48:21,371 - INFO - Fetched all teams
 2025-09-04 15:49:34,637 - INFO - Fetched all teams
 2025-09-04 15:49:38,476 - INFO - Fetched all teams
+2025-09-04 17:19:31,050 - INFO - User logged in successfully: esh@example.com
+2025-09-04 17:26:18,124 - INFO - User logged in successfully: esh@example.com
+2025-09-04 17:45:22,550 - INFO - User logged in successfully: esh@example.com
+2025-09-04 17:46:48,956 - INFO - Team created successfully: Challengers
+2025-09-04 17:48:49,567 - INFO - Team created successfully: Royel Challengers
+2025-09-04 17:49:40,016 - ERROR - Invalid or expired token
+Traceback (most recent call last):
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jws.py", line 189, in _load
+    header = json.loads(header_data.decode("utf-8"))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x88 in position 6: invalid start byte
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jws.py", line 191, in _load
+    raise JWSError("Invalid header string: %s" % e)
+jose.exceptions.JWSError: Invalid header string: 'utf-8' codec can't decode byte 0x88 in position 6: invalid start byte
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Gameplan\GamePlan-Sports-Team-Match-Scheduling-API\app\auth.py", line 14, in get_current_user
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 161, in decode
+    raise JWTError(e)
+jose.exceptions.JWTError: Invalid header string: 'utf-8' codec can't decode byte 0x88 in position 6: invalid start byte
+2025-09-04 17:49:51,917 - WARNING - Team creation failed: Royel Challengers already exists

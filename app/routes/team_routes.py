@@ -1,4 +1,5 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
+from app.auth import get_current_user
 from app.models import Team
 from app.database import teams_collection
 from app.utils.decorators import response_timer
@@ -10,8 +11,13 @@ router = APIRouter()
 # POST /teams - Create a new team
 @router.post("/create_team")
 @response_timer
-async def create_team(team: Team):
+async def create_team(team: Team, current_user: dict = Depends(get_current_user)):
     try:
+        # Role-based protection
+        if current_user.get("role") != "admin":
+            logger.warning(f"Unauthorized team creation attempt by {current_user['email']}")
+            raise HTTPException(status_code=403, detail="Only admins can create teams")
+        
         # Check if team exists
         if teams_collection.find_one({"name": team.name}):
             logger.warning(f"Team creation failed: {team.name} already exists")
@@ -35,16 +41,16 @@ async def create_team(team: Team):
 
 
 # GET /teams - Get all teams
-@router.get("/get_teams")
+@router.get("/all_teams")
 @response_timer
-async def get_teams():
+async def get_teams(current_user: dict = Depends(get_current_user)):
     try:
         teams = list(teams_collection.find())
         for t in teams:
             t["id"] = str(t["_id"])
             del t["_id"]
 
-        logger.info("Fetched all teams")
+        logger.info(f"User {current_user['email']} fetched all teams")
         return {"teams": teams}
 
     except Exception as e:
