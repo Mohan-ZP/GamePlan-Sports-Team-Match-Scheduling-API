@@ -1,0 +1,4 @@
+2025-09-04 13:02:50,315 - INFO - User registered successfully: esh@example.com
+2025-09-04 13:09:30,471 - INFO - User registered successfully: akhi@example.com
+2025-09-04 13:12:56,437 - WARNING - Registration failed: User already exists - ram@example.com
+2025-09-04 13:13:43,484 - INFO - User registered successfully: ram@example.com
