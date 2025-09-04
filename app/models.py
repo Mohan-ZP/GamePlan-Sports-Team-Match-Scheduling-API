@@ -6,3 +6,7 @@ class UserRegister(BaseModel):
     email: EmailStr = Field(..., example="john@example.com")
     password: str = Field(..., min_length=6, example="securePass123")
     role: str = Field(..., example="coach")
+
+class LoginRequest(BaseModel):
+    email: EmailStr
+    password: str

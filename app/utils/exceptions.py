@@ -9,3 +9,8 @@ class UserAlreadyExistsException(HTTPException):
 class RegistrationFailedException(HTTPException):
     def __init__(self):
         super().__init__(status_code=500, detail="User registration failed")
+
+
+class InvalidCredentialsException(HTTPException):
+    def __init__(self):
+        super().__init__(status_code=401, detail="Invalid email or password")
