@@ -80,3 +80,9 @@ bson.errors.InvalidId: '68b983300b1bcd47ca36083' is not a valid ObjectId, it mus
 2025-09-05 00:26:34,363 - INFO - Player created successfully: Arjun
 2025-09-05 00:40:22,417 - INFO - User esh@example.com fetched all players
 2025-09-05 00:40:30,112 - INFO - User esh@example.com fetched all players
+2025-09-05 13:27:33,869 - INFO - User logged in successfully: esh@example.com
+2025-09-05 13:28:07,404 - INFO - User esh@example.com fetched all teams
+2025-09-05 13:35:12,691 - INFO - Match scheduled: Warriors vs Royel Challengers on 2025-09-10 18:30
+2025-09-05 13:36:58,286 - INFO - Match scheduled: Royel Challengers vs Warriors on 2025-10-15 20:30
+2025-09-05 13:38:28,562 - INFO - Match scheduled: Royel Challengers vs Challengers on 2025-9-25 20:30
+2025-09-05 13:40:09,335 - WARNING - A team cannot play against itself

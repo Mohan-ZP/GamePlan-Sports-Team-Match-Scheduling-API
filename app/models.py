@@ -21,3 +21,9 @@ class Player(BaseModel):
     age: int = Field(..., example=30, gt=0)
     position: str = Field(..., example="Point Guard")
     team_id: str = Field(..., example="64f123abc456")  # Reference to Team
+
+class Match(BaseModel):
+    home_team_id: str = Field(..., example="64f123abc456")
+    away_team_id: str = Field(..., example="64f456def789")
+    date: str = Field(..., example="2025-09-10 18:30")  
+    location: str = Field(..., example="Madison Square Garden")
