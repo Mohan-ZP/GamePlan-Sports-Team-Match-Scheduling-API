@@ -9,7 +9,7 @@ from app.utils.exceptions import UserAlreadyExistsException, RegistrationFailedE
 
 router = APIRouter()
 
-
+# Register New User
 @router.post("/register")
 @response_timer
 async def register_user(user: UserRegister):
@@ -46,6 +46,7 @@ async def register_user(user: UserRegister):
         raise RegistrationFailedException()
 
 
+# Login Existing User
 @router.post("/login")
 @response_timer
 async def login_user(credentials: LoginRequest):
