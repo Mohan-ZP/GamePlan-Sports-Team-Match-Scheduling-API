@@ -34,6 +34,10 @@ class PlayerCreationFailedException(HTTPException):
     def __init__(self):
         super().__init__(status_code=500, detail="Failed to create player")
 
+class PlayerNotFoundException(HTTPException):
+    def __init__(self, player_id: str):
+        super().__init__(status_code=404, detail=f"Player with id {player_id} not found")
+
 class MatchCreationFailedException(HTTPException):
     def __init__(self):
         super().__init__(status_code=500, detail="Failed to create match")

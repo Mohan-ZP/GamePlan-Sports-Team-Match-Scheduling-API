@@ -4,7 +4,7 @@ from app.models import Player
 from app.database import players_collection, teams_collection
 from app.utils.decorators import response_timer
 from app.utils.logger import logger
-from app.utils.exceptions import PlayerAlreadyExistsException, PlayerCreationFailedException
+from app.utils.exceptions import PlayerAlreadyExistsException, PlayerCreationFailedException, PlayerNotFoundException
 from app.auth import get_current_user
 
 router = APIRouter()
@@ -65,3 +65,32 @@ async def get_players(current_user: dict = Depends(get_current_user)):
         logger.exception(f"Error fetching players: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to fetch players")
     
+
+# Get a single player by ID
+@router.get("/players/{player_id}")
+@response_timer
+async def get_player(player_id: str, current_user: dict = Depends(get_current_user)):
+    try:
+        # Role-based check
+        if current_user.get("role") not in ["admin", "coach"]:
+            logger.warning(f"Unauthorized player creation attempt by {current_user['email']}")
+            raise HTTPException(status_code=403, detail="Only admins or coaches can add players")
+        
+        player = players_collection.find_one({"_id": ObjectId(player_id)})
+        
+        if not player:
+            logger.warning(f"Player not found: {player_id}")
+            raise PlayerNotFoundException(player_id)
+
+        player["id"] = str(player["_id"])
+        player["team_id"] = str(player["team_id"])
+        del player["_id"]
+
+        logger.info(f"User {current_user['email']} fetched player {player['name']}")
+        return player
+
+    except PlayerNotFoundException as e:
+        raise e
+    except Exception as e:
+        logger.exception(f"Error fetching player {player_id}: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch player")

@@ -88,3 +88,6 @@ bson.errors.InvalidId: '68b983300b1bcd47ca36083' is not a valid ObjectId, it mus
 2025-09-05 13:40:09,335 - WARNING - A team cannot play against itself
 2025-09-05 13:51:36,390 - INFO - User esh@example.com fetched all matches
 2025-09-05 13:52:02,008 - INFO - User esh@example.com fetched all matches
+2025-09-05 17:36:45,112 - INFO - User logged in successfully: esh@example.com
+2025-09-05 17:37:23,643 - INFO - User esh@example.com fetched all players
+2025-09-05 17:40:42,874 - INFO - User esh@example.com fetched player Jack

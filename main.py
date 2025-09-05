@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routes import auth_routes, team_routes, player_routes, match_routes, analytics_routes
+from app.routes import auth_routes, team_routes, player_routes, match_routes
 
 app = FastAPI(title="GamePlan - Sports Team & Match Scheduling API")
 
