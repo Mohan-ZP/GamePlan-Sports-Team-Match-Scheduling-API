@@ -1,4 +1,3 @@
-# app/routes/match_routes.py
 from fastapi import APIRouter, Depends, HTTPException
 from bson import ObjectId
 from app.models import Match
@@ -50,3 +49,22 @@ async def create_match(match: Match, current_user: dict = Depends(get_current_us
         logger.exception(f"Unexpected error during match creation: {str(e)}")
         raise MatchCreationFailedException()
 
+
+# Get all matches
+@router.get("/all_matches")
+@response_timer
+async def get_matches(current_user: dict = Depends(get_current_user)):
+    try:
+        matches = list(matches_collection.find())
+        for m in matches:
+            m["id"] = str(m["_id"])
+            m["home_team_id"] = str(m["home_team_id"])
+            m["away_team_id"] = str(m["away_team_id"])
+            del m["_id"]
+
+        logger.info(f"User {current_user['email']} fetched all matches")
+        return {"matches": matches}
+
+    except Exception as e:
+        logger.exception(f"Error fetching matches: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch matches")
