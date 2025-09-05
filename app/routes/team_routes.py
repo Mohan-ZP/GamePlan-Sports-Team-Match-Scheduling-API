@@ -8,7 +8,7 @@ from app.utils.exceptions import TeamAlreadyExistsException, TeamCreationFailedE
 
 router = APIRouter()
 
-# POST /teams - Create a new team
+# Create a new team
 @router.post("/create_team")
 @response_timer
 async def create_team(team: Team, current_user: dict = Depends(get_current_user)):
@@ -40,7 +40,7 @@ async def create_team(team: Team, current_user: dict = Depends(get_current_user)
         raise TeamCreationFailedException()
 
 
-# GET /teams - Get all teams
+# Get all teams
 @router.get("/all_teams")
 @response_timer
 async def get_teams(current_user: dict = Depends(get_current_user)):

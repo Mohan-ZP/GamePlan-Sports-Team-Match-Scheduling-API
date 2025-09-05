@@ -2,14 +2,16 @@ from fastapi import APIRouter, Depends, HTTPException
 from bson import ObjectId
 from app.models import Player
 from app.database import players_collection, teams_collection
+from app.utils.decorators import response_timer
 from app.utils.logger import logger
 from app.utils.exceptions import PlayerAlreadyExistsException, PlayerCreationFailedException
 from app.auth import get_current_user
 
 router = APIRouter()
 
-# POST /players - Add a new player
+# Add a new player
 @router.post("/add_player")
+@response_timer
 async def create_player(player: Player, current_user: dict = Depends(get_current_user)):
     try:
         # Role-based check
@@ -44,3 +46,22 @@ async def create_player(player: Player, current_user: dict = Depends(get_current
         logger.exception(f"Unexpected error during player creation: {str(e)}")
         raise PlayerCreationFailedException()
 
+
+# Get all players
+@router.get("/all_players")
+@response_timer
+async def get_players(current_user: dict = Depends(get_current_user)):
+    try:
+        players = list(players_collection.find())
+        for p in players:
+            p["id"] = str(p["_id"])
+            p["team_id"] = str(p["team_id"])  
+            del p["_id"]
+
+        logger.info(f"User {current_user['email']} fetched all players")
+        return {"players": players}
+
+    except Exception as e:
+        logger.exception(f"Error fetching players: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to fetch players")
+    

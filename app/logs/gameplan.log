@@ -78,3 +78,5 @@ Traceback (most recent call last):
     raise InvalidId(
 bson.errors.InvalidId: '68b983300b1bcd47ca36083' is not a valid ObjectId, it must be a 12-byte input or a 24-character hex string
 2025-09-05 00:26:34,363 - INFO - Player created successfully: Arjun
+2025-09-05 00:40:22,417 - INFO - User esh@example.com fetched all players
+2025-09-05 00:40:30,112 - INFO - User esh@example.com fetched all players
