@@ -91,3 +91,89 @@ bson.errors.InvalidId: '68b983300b1bcd47ca36083' is not a valid ObjectId, it mus
 2025-09-05 17:36:45,112 - INFO - User logged in successfully: esh@example.com
 2025-09-05 17:37:23,643 - INFO - User esh@example.com fetched all players
 2025-09-05 17:40:42,874 - INFO - User esh@example.com fetched player Jack
+2025-09-30 12:49:44,346 - INFO - User registered successfully: ram@example.com
+2025-09-30 12:49:59,540 - INFO - User logged in successfully: esh@example.com
+2025-09-30 12:51:39,738 - INFO - Team created successfully: Royel Challengers
+2025-09-30 12:52:04,942 - ERROR - Invalid or expired token
+Traceback (most recent call last):
+  File "D:\Gameplan\GamePlan-Sports-Team-Match-Scheduling-API\app\auth.py", line 13, in get_current_user
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 174, in decode
+    _validate_claims(
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2025-09-30 13:11:16,582 - ERROR - Invalid or expired token
+Traceback (most recent call last):
+  File "D:\Gameplan\GamePlan-Sports-Team-Match-Scheduling-API\app\auth.py", line 13, in get_current_user
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 174, in decode
+    _validate_claims(
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2025-09-30 13:11:38,479 - INFO - Player created successfully: Arjun
+2025-09-30 13:11:44,505 - ERROR - Invalid or expired token
+Traceback (most recent call last):
+  File "D:\Gameplan\GamePlan-Sports-Team-Match-Scheduling-API\app\auth.py", line 13, in get_current_user
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 174, in decode
+    _validate_claims(
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2025-09-30 13:12:08,574 - WARNING - One or both teams not found
+2025-09-30 13:13:21,722 - WARNING - One or both teams not found
+2025-09-30 13:13:51,630 - INFO - Match scheduled: Warriors vs Thunders on 2025-9-27 20:30
+2025-09-30 13:14:08,048 - ERROR - Invalid or expired token
+Traceback (most recent call last):
+  File "D:\Gameplan\GamePlan-Sports-Team-Match-Scheduling-API\app\auth.py", line 13, in get_current_user
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 174, in decode
+    _validate_claims(
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 497, in _validate_claims
+    _validate_exp(claims, leeway=leeway)
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 331, in _validate_exp
+    raise ExpiredSignatureError("Signature has expired.")
+jose.exceptions.ExpiredSignatureError: Signature has expired.
+2025-09-30 13:14:20,184 - ERROR - Invalid or expired token
+Traceback (most recent call last):
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jws.py", line 180, in _load
+    signing_input, crypto_segment = jwt.rsplit(b".", 1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 159, in decode
+    payload = jws.verify(token, key, algorithms, verify=verify_signature)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jws.py", line 74, in verify
+    header, payload, signing_input, signature = _load(token)
+                                                ^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jws.py", line 184, in _load
+    raise JWSError("Not enough segments")
+jose.exceptions.JWSError: Not enough segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Gameplan\GamePlan-Sports-Team-Match-Scheduling-API\app\auth.py", line 13, in get_current_user
+    payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\K K\anaconda3\envs\gameplan\Lib\site-packages\jose\jwt.py", line 161, in decode
+    raise JWTError(e)
+jose.exceptions.JWTError: Not enough segments
+2025-09-30 13:14:49,662 - INFO - User esh@example.com fetched all matches
+2025-09-30 13:15:19,828 - INFO - User esh@example.com fetched player Jack
